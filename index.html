@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="tr-TR">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="style.css">
+    <script src="https://kit.fontawesome.com/c20485228a.js"></script>
+</head>
+<body>
+
+    <div id="div1">
+        <label for="kullaniciAdi" style="margin-left: 60px; font-weight: bold;">Kullanıcı Adı : </label>
+        <input type="text" id="kullaniciAdi"><br>
+        <label for="parola" style="margin-left: 60px; font-weight: bold;">Parola : </label>
+        <input type="password" id="parola"><br><br>
+        <button id="btn" type="submit" onclick="girisOnayi()">GİRİS</button>
+    </div>
+
+
+    <script>
+        var kullanicilar = [
+            {kullaniciAdi:"admin", parola:"admin"},
+            {kullaniciAdi:"yunus", parola:"123"},
+            {kullaniciAdi:"yunus", parola:"123"}
+        ];
+        var girilenKullaniciAdi, girilenParola;
+        var x;
+        
+        function kontrolEt(){
+            girilenKullaniciAdi = document.getElementById("kullaniciAdi").value;
+            girilenParola = document.getElementById("parola").value;
+        
+            for (x of kullanicilar){
+                if((x.kullaniciAdi==girilenKullaniciAdi)&&(x.parola==girilenParola)){
+                    return true;
+                }
+                /*else{
+                    return false; kullanılmama sebebi admin doğru olmazsa diğerlerine de false değeri veriyor.
+                }*/
+            }
+        
+        }
+
+        function girisOnayi(){
+            kontrolEt();
+            if (kontrolEt()){
+                window.open("https://www.instagram.com/yunus.turall/","_blank");
+            }
+            else{
+                alert("Hatalı Kullanıcı Adı ya da Parola Lütfen Yeniden Deneyiniz");
+                document.getElementById("kullaniciAdi").value = "";
+                document.getElementById("parola").value = "";
+            }
+        }
+
+   
+    </script>
+
+</body>
+</html>
